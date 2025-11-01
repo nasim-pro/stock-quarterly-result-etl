@@ -1,8 +1,8 @@
 .env
 /node_modules
-/log
 package-lock.json
 *.driver.bundle.js
 /dist
 /data
 /.vscode
+stock-etl-system.log

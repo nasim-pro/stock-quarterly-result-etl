@@ -3,7 +3,6 @@ import type { StockData } from "../types.ts";
 import { buyStock } from "./buy-stock.ts";
 import { storeResultStock } from "./save-stock.ts";
 import { sellStock } from "./sell-stock.ts";
-// import { StockData } from "./type";
 
 
 // this method will decide the action to buy or sell the stocks

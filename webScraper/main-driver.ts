@@ -1,5 +1,6 @@
 import { nseDriver } from "./scrape/nse-driver.ts";
 import { bseDriver } from "./scrape/bse-driver.ts";
+import { closeMongoConnection } from "./dbtransaction/savetoMongodb.ts";
 
 
 export async function mainDriver() {
@@ -26,6 +27,7 @@ export async function mainDriver() {
     } catch (err) {
         console.error("Error in main driver:", err);
     } finally {
+        await closeMongoConnection()
         process.exit(0); // exit Node.js
     }
 })();

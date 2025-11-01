@@ -4,3 +4,5 @@
 package-lock.json
 *.driver.bundle.js
 /dist
+/data
+/.vscode

@@ -126,7 +126,7 @@ export async function stockDetailsFromScreener(ticker: string): Promise<any | nu
                     values.push(parseFloat($(td).text().trim()) || null);
                 });
 
-            if (/Net Sales|Operating Revenue/i.test(rowName))
+            if (/Net Sales|Operating Revenue|Interest Earned/i.test(rowName))
                 quarterlyData.quarterlySales = values;
             else if (/EPS/i.test(rowName)) quarterlyData.quarterlyEps = values;
             else if (/Profit After Tax|Net Profit/i.test(rowName))

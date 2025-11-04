@@ -74,8 +74,8 @@ export async function searchFinology(query: string): Promise<any | null> {
         const response = await client.get(url, {
             headers: getHeaders(),
         });
-        console.log("search query", query);
-        console.log("response", response.data);
+        // console.log("search query", query);
+        // console.log("response", response.data);
 
         return response?.data;
     } catch (err: any) {

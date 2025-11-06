@@ -129,21 +129,21 @@ export function yearlyImpliedGrowth(quarterlyArr: number[]): number | null {
  * → Compares the most recent quarter with the oldest available (same quarter previous year)
  * → Ideal for seasonal businesses
  */
-export function yoySameQuarterGrowth(quarterlyArr: number[]): string {
+export function yoySameQuarterGrowth(quarterlyArr: number[]): number {
     try {
         const valid = quarterlyArr?.map(Number)?.filter((v) => !isNaN(v));
-        if (!valid || valid.length === 0) return "0.00";
-        if (valid.length === 1) return "100.00";
+        if (!valid || valid.length === 0) return 0.00;
+        if (valid.length === 1) return 100.00;
 
         const first = valid[0]; // same quarter last year (oldest)
         const last = valid[valid.length - 1]; // current quarter (latest)
-        if (first === 0) return "0.00";
+        if (first === 0) return 0.00;
 
         const growth = ((last - first) / Math.abs(first)) * 100;
-        return growth.toFixed(2);
+        return parseFloat(growth.toFixed(2));
     } catch (err) {
         console.error("error calculating yoySameQuarterGrowth:", err);
-        return "0.00";
+        return 0.00;
     }
 }
 
@@ -151,24 +151,24 @@ export function yoySameQuarterGrowth(quarterlyArr: number[]): string {
  * Recent Quarter-over-Quarter (QoQ) Growth
  * → Compares the last two valid quarters for short-term momentum
  */
-export function qoqGrowth(quarterlyArr: number[]): string {
+export function qoqGrowth(quarterlyArr: number[]): number {
     try {
         const valid = quarterlyArr
             ?.map(Number)
             ?.filter((v) => !isNaN(v) && v !== null && v !== undefined);
 
-        if (!valid || valid.length === 0) return "0.00";
-        if (valid.length === 1) return "100.00"; // ✅ single quarter case handled
+        if (!valid || valid.length === 0) return 0.00;
+        if (valid.length === 1) return 100.00; // ✅ single quarter case handled
 
         const prev = valid[valid.length - 2];
         const last = valid[valid.length - 1];
-        if (prev === 0) return "0.00";
+        if (prev === 0) return 0.00;
 
         const growth = ((last - prev) / Math.abs(prev)) * 100;
-        return growth.toFixed(2);
+        return parseFloat(growth.toFixed(2));
     } catch (err) {
         console.error("error calculating recentQoQGrowth:", err);
-        return "0.00";
+        return 0.00;
     }
 }
 
